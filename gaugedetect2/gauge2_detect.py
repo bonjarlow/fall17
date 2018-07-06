@@ -19,8 +19,8 @@ gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 # load the gauge detector Haar cascade, then detect gauges
 # in the input image
 detector = cv2.CascadeClassifier(args["cascade"])
-rects = detector.detectMultiScale(gray, scaleFactor=1.2,
-	minNeighbors=5, minSize=(25, 25))
+rects = detector.detectMultiScale(gray, scaleFactor=1.3,
+	minNeighbors=20, minSize=(50, 50))
 	
 # loop over the gauges and draw a rectangle surrounding each
 for (i, (x, y, w, h)) in enumerate(rects):
@@ -29,7 +29,7 @@ for (i, (x, y, w, h)) in enumerate(rects):
 		cv2.FONT_HERSHEY_PLAIN, 1, (255, 255, 255), 2)
  
 # show the detected gauges
-cv2.imshow("Car Profiles", image)
+cv2.imshow("Gauge Detector", image)
 cv2.waitKey(0)
 
 # for cat3.jpeg scaleFactor=1.1, minNeighbors=5, minSize=(10,10)
